@@ -2,6 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 
 url = "https://bpjt.pu.go.id/cctv/cctv_inframe"
+paginate = False
+customCategory = True
 
 payload = {}
 headers = {
@@ -22,6 +24,9 @@ headers = {
     'sec-ch-ua-platform': '"Windows"'
 }
 
+def getCategory():
+    return getRuas()
+
 def getRuas():
     r = requests.request("GET", url,headers=headers,data=payload,verify=False)
     soup = BeautifulSoup(r.text, 'html.parser')
@@ -38,7 +43,7 @@ def getRuas():
         })
     return result
 
-def getList(ruas):
+def getList(ruas,page=None):
     result = []
     pageLink = "https://bpjt.pu.go.id/cctv/cctv_inframe/?id_ruas="+ruas+"&status=online"
     responsePage = requests.request("GET", pageLink,headers=headers,data=payload,verify=False)

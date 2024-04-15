@@ -2,8 +2,10 @@ import requests
 import json
 
 url = "http://api.cctv.malangkota.go.id/records/cameras"
+paginate = False
+customCategory = False
 
-def getList():
+def getList(page=None):
     payload = {}
     headers = {
         'authority': 'cctv.jogjakota.go.id',

@@ -3,8 +3,10 @@ import requests
 import json
 
 url = "http://cctv.okukab.go.id/map/viewer/ajax/get_markers.php"
+paginate = False
+customCategory = False
 
-def getList():
+def getList(page=None):
     payload = "id_map=1"
     headers = {
         'Accept': '*/*',

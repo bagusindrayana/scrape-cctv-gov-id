@@ -1,10 +1,12 @@
 import requests
 import json
 from bs4 import BeautifulSoup
+paginate = False
+customCategory = False
 
 url = "https://www.bekasikota.go.id/cctv"
 
-def getList():
+def getList(page=None):
     payload = {}
     headers = {
         'authority': 'cctv.jogjakota.go.id',

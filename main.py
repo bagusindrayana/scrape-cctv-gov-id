@@ -1,4 +1,4 @@
-from Providers import Jogja,KabBanjar,Malang,BanjarBaru,Bekasi,KabOku,Tol
+from Providers import Jogja,KabBanjar,Malang,BanjarBaru,Bekasi,KabOku,Tol,Samarinda
 
 
-print(Jogja.getList())
+print(Samarinda.getList())

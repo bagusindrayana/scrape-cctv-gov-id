@@ -3,8 +3,10 @@ import json
 from bs4 import BeautifulSoup
 
 url = "https://cctv.banjarkab.go.id/"
+paginate = False
+customCategory = False
 
-def getList():
+def getList(page=None):
     payload = {}
     headers = {
         'authority': 'cctv.jogjakota.go.id',
