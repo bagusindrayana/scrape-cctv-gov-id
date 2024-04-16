@@ -3,7 +3,7 @@ import json
 from bs4 import BeautifulSoup
 
 url = "https://diskominfo.samarindakota.go.id/media/cctv?page="
-paginate = False
+paginate = True
 customCategory = False
 
 def getList(page=None):
