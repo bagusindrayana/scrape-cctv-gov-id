@@ -1,6 +1,7 @@
 from Providers import Jogja,KabBanjar,Malang,BanjarBaru,Bekasi,KabOku,Tol,Samarinda,Bandung,Bali,Cirebon
 from typing import Union
 from fastapi import FastAPI, Response, status, HTTPException
+import uvicorn
 
 app = FastAPI()
 
@@ -39,3 +40,6 @@ def read_item(wilayah: str, q: Union[str, None] = None,response=Response):
         response.status_code = status.HTTP_404_NOT_FOUND
         return HTTPException(status_code=404, detail="Not Found")
     return results
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
