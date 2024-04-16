@@ -1,10 +1,23 @@
 from Providers import Jogja,KabBanjar,Malang,BanjarBaru,Bekasi,KabOku,Tol,Samarinda,Bandung,Bali,Cirebon
 from typing import Union
 from fastapi import FastAPI, Response, status, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+
 import uvicorn
 
 app = FastAPI()
 
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+def get_class(name: str) -> Union[object, None]:
+    return globals().get(name, None)
 
 @app.get("/")
 def read_root():
@@ -12,33 +25,32 @@ def read_root():
 
 
 @app.get("/cctv/{wilayah}",status_code=200)
-def read_item(wilayah: str, q: Union[str, None] = None,response=Response):
-    results = []
-    if wilayah == "Bali":
-        results = Bali.getList()
-    elif wilayah == "Bandung":
-        results = Bandung.getList()
-    elif wilayah == "BanjarBaru":
-        results = BanjarBaru.getList()
-    elif wilayah == "Bekasi":
-        results = Bekasi.getList()
-    elif wilayah == "Cirebon":
-        results = Cirebon.getList()
-    elif wilayah == "Jogja":
-        results = Jogja.getList()
-    elif wilayah == "KabBanjar":
-        results = KabBanjar.getList()
-    elif wilayah == "KabOku":
-        results = KabOku.getList()
-    elif wilayah == "Malang":
-        results = Malang.getList()
-    elif wilayah == "Samarinda":
-        results = Samarinda.getList()
-    elif wilayah == "Tol":
-        results = Tol.getList()
-    else:
+def get_cctv(wilayah: str, page: int = 1,category:str = None,response=Response):
+    try:
+        w = get_class(wilayah)
+    except:
         response.status_code = status.HTTP_404_NOT_FOUND
         return HTTPException(status_code=404, detail="Not Found")
+    
+    results = {
+        'paginate':w.paginate,
+        'customCategory':w.customCategory,
+        'data':w.getList(page,category)
+    }
+    
+    return results
+
+@app.get("/cctv/{wilayah}/category",status_code=200)
+def get_cctv_cat(wilayah: str, page: int = 1,category:str = None,response=Response):
+    try:
+        w = get_class(wilayah)
+    except:
+        response.status_code = status.HTTP_404_NOT_FOUND
+        return HTTPException(status_code=404, detail="Not Found")
+    results = {
+        'data':w.getCategory()
+    }
+    
     return results
 
 if __name__ == "__main__":

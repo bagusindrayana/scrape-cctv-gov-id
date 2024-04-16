@@ -6,7 +6,7 @@ url = "https://cctv.banjarbarukota.go.id/"
 paginate = False
 customCategory = False
 
-def getList(page=None):
+def getList(page=None,cat=None):
     payload = {}
     headers = {
         'authority': 'cctv.jogjakota.go.id',

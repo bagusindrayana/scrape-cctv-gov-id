@@ -7,7 +7,7 @@ paginate = False
 customCategory = False
 
 
-def getList(page=None):
+def getList(page=None,cat=None):
     payload = {}
     headers = {
         "authority": "pelindung.bandung.go.id",

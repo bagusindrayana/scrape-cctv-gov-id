@@ -5,7 +5,7 @@ url = "http://api.cctv.malangkota.go.id/records/cameras"
 paginate = False
 customCategory = False
 
-def getList(page=None):
+def getList(page=None,cat=None):
     payload = {}
     headers = {
         'authority': 'cctv.jogjakota.go.id',

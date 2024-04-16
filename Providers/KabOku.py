@@ -6,7 +6,7 @@ url = "http://cctv.okukab.go.id/map/viewer/ajax/get_markers.php"
 paginate = False
 customCategory = False
 
-def getList(page=None):
+def getList(page=None,cat=None):
     payload = "id_map=1"
     headers = {
         'Accept': '*/*',

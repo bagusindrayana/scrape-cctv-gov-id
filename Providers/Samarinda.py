@@ -6,7 +6,7 @@ url = "https://diskominfo.samarindakota.go.id/media/cctv?page="
 paginate = True
 customCategory = False
 
-def getList(page=None):
+def getList(page=None,cat=None):
     payload = {}
     headers = {
         'authority': 'diskominfo.samarindakota.go.id',
@@ -27,7 +27,11 @@ def getList(page=None):
         for wrapper in imgWrapper:
             img = wrapper.find("img")
             if img:
-                name = wrapper.find("div",{"class":"stream__info"}).text.strip().rstrip()
+                stream_info = wrapper.find("div",{"class":"stream__info"})
+                # remove span and div tag inside stream_info
+                for tag in stream_info.find_all(["span","div"]):
+                    tag.decompose()
+                name = stream_info.text.strip().rstrip()
                 # find source
                 source = img['src']
                 source = source.replace("format=jpeg","format=fmp4")

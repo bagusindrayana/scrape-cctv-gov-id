@@ -4,7 +4,7 @@ url = "https://cctv.jogjakota.go.id/home/getdata"
 paginate = False
 customCategory = False
 
-def getList(page=None):
+def getList(page=None,cat=None):
     payload = {}
     headers = {
         'authority': 'cctv.jogjakota.go.id',

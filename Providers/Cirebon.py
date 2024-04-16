@@ -6,7 +6,7 @@ url = "https://cctv.cirebonkota.go.id/cctv"
 paginate = False
 customCategory = False
 
-def getList(page=None):
+def getList(page=None,cat=None):
     results = []
     f = open("Providers/cctv_list/cirebon.txt", "r")
     t = f.read()

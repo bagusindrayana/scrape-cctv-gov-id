@@ -12,7 +12,7 @@ headers = {
     'Cache-Control': 'max-age=0',
     'Connection': 'keep-alive',
     'Cookie': 'tolkitasemua=ae56729d1e002f057372f773ef75749a; ci_session=bcmim05rp2ljl1v2psdomhcov1boq1g5; ci_session=gk53rc6vj4i7016esgu89oaui4v9fscf; tolkitasemua=94601c16b70ecb49c07bc355b5468fee',
-    'Referer': 'https://bpjt.pu.go.id/cctv/cctv_inframe/?id_ruas=jpt&status=offline',
+    'Referer': 'https://bpjt.pu.go.id/cctv/cctv_inframe',
     'Sec-Fetch-Dest': 'document',
     'Sec-Fetch-Mode': 'navigate',
     'Sec-Fetch-Site': 'same-origin',
@@ -30,7 +30,7 @@ def getCategory():
 def getRuas():
     r = requests.request("GET", url,headers=headers,data=payload,verify=False)
     soup = BeautifulSoup(r.text, 'html.parser')
-    ruas = soup.find_all('div', {'class':'cctv-box-item'})
+    ruas = soup.find_all('div', {'class':'post-text-block'})
     result = []
     for r in ruas:
         pageLink = r.find('a').get('href')
@@ -43,18 +43,20 @@ def getRuas():
         })
     return result
 
-def getList(ruas,page=None):
+def getList(page=None,cat=None):
+    if not cat:
+        cat = '6td'
     result = []
-    pageLink = "https://bpjt.pu.go.id/cctv/cctv_inframe/?id_ruas="+ruas+"&status=online"
+    pageLink = "https://bpjt.pu.go.id/cctv/cctv_inframe/?id_ruas="+cat+"&status=online"
     responsePage = requests.request("GET", pageLink,headers=headers,data=payload,verify=False)
     soupPage = BeautifulSoup(responsePage.text, 'html.parser')
-    data = soupPage.find_all('div', {'class':'cctv-box-item'})
+    data = soupPage.find_all('div', {'class':'post-text-block'})
     for item in data:
         video = item.find("video")
         if video:
             source = video.find("source")
             result.append({
-                'name': item.find('div',{'class','text-center'}).text,
+                'name': item.find('div',{'class','text-center'}).text.strip().rstrip(),
                 'stream': source['src'],
                 'header':{}
             })
