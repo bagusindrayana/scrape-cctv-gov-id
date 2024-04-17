@@ -30,7 +30,8 @@ def getList(page=None,cat=None):
             results.append(
                 {
                     "name": data["ch_name"], 
-                    "stream": "https://transcode.baliprov.dev/get-m3u8.php?srv=internals&m3u8=live.m3u8&channel="+str(data["ch_id"]), "header": {}
+                    "stream": "https://transcode.baliprov.dev/get-m3u8.php?srv=internals&m3u8=live.m3u8&channel="+str(data["ch_id"]), 
+                    "header": headers
                 }
             )
 
