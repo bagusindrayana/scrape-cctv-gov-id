@@ -30,7 +30,7 @@ def getList(page=None,cat=None):
         for item in data['records']:
             results.append({
                 'name':item['name'],
-                'stream':"http://stream.cctv.malangkota.go.id/WebRTCApp/streams/"+item['stream_id'] +".m3u8",
+                'stream':"http://stream.cctv.malangkota.go.id/WebRTCApp/streams/"+item['stream_id'] +".m3u8?token=null",
                 'header':{}
             })
     return results
