@@ -6,6 +6,8 @@ source = "https://cctv.cirebonkota.go.id"
 url = "https://cctv.cirebonkota.go.id/cctv"
 paginate = False
 customCategory = False
+headers = {}
+payload = {}
 
 def getList(page=None,cat=None):
     results = []

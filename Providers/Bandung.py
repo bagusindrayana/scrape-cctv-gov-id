@@ -7,17 +7,19 @@ url = "https://pelindung.bandung.go.id:8443/api/cek"
 paginate = False
 customCategory = False
 
+payload = {}
+headers = {
+    "authority": "pelindung.bandung.go.id",
+    "origin": "https://pelindung.bandung.go.id",
+    "referer": "https://pelindung.bandung.go.id/",
+    "sec-fetch-site": "same-origin",
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "x-requested-with": "XMLHttpRequest",
+}
+
 
 def getList(page=None,cat=None):
-    payload = {}
-    headers = {
-        "authority": "pelindung.bandung.go.id",
-        "accept": "application/json",
-        "sec-fetch-site": "same-origin",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "x-requested-with": "XMLHttpRequest",
-        "Content-Type": "application/json",
-    }
+    
 
     response = requests.request(
         "GET", url, headers=headers, data=payload
@@ -27,7 +29,7 @@ def getList(page=None,cat=None):
         json_data = json.loads(response.text)
         for data in json_data:
             results.append(
-                {"name": data["cctv_name"], "stream": data["stream_cctv"], "header": {}}
+                {"name": data["cctv_name"], "stream": data["stream_cctv"], "header": headers}
             )
 
     else:
