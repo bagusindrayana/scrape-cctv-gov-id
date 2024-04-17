@@ -1,6 +1,7 @@
 import requests
 import json
 
+source = "http://cctv.malangkota.go.id"
 url = "http://api.cctv.malangkota.go.id/records/cameras"
 paginate = False
 customCategory = False

@@ -33,6 +33,7 @@ def get_cctv(wilayah: str, page: int = 1,category:str = None,response=Response):
         return HTTPException(status_code=404, detail="Not Found")
     
     results = {
+        'source':w.source,
         'paginate':w.paginate,
         'customCategory':w.customCategory,
         'data':w.getList(page,category)

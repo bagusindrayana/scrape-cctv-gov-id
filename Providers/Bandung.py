@@ -2,6 +2,7 @@ import requests
 import json
 from bs4 import BeautifulSoup
 
+source = "https://pelindung.bandung.go.id"
 url = "https://pelindung.bandung.go.id:8443/api/cek"
 paginate = False
 customCategory = False

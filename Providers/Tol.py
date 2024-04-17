@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
+source = "https://bpjt.pu.go.id/cctv/cctv_inframe"
 url = "https://bpjt.pu.go.id/cctv/cctv_inframe"
 paginate = False
 customCategory = True
@@ -55,9 +56,13 @@ def getList(page=None,cat=None):
         video = item.find("video")
         if video:
             source = video.find("source")
+            streamUrl = source['src']
+            # if doesnt contain http
+            if not streamUrl.startswith("http"):
+                streamUrl = "http://"+streamUrl
             result.append({
                 'name': item.find('div',{'class','text-center'}).text.strip().rstrip(),
-                'stream': source['src'],
+                'stream': streamUrl,
                 'header':{}
             })
     return result

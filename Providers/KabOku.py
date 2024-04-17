@@ -2,6 +2,7 @@
 import requests
 import json
 
+source = "http://cctv.okukab.go.id"
 url = "http://cctv.okukab.go.id/map/viewer/ajax/get_markers.php"
 paginate = False
 customCategory = False

@@ -1,7 +1,7 @@
 import requests
 import json
 from bs4 import BeautifulSoup
-
+source = "https://diskominfo.samarindakota.go.id/media/cctv"
 url = "https://diskominfo.samarindakota.go.id/media/cctv?page="
 paginate = True
 customCategory = False

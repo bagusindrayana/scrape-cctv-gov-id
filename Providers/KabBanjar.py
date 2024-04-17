@@ -2,6 +2,7 @@ import requests
 import json
 from bs4 import BeautifulSoup
 
+source = "https://cctv.banjarkab.go.id"
 url = "https://cctv.banjarkab.go.id/"
 paginate = False
 customCategory = False

@@ -1,5 +1,7 @@
 import requests
 import json
+
+source = "https://cctv.jogjakota.go.id"
 url = "https://cctv.jogjakota.go.id/home/getdata"
 paginate = False
 customCategory = False

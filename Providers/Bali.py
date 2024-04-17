@@ -2,6 +2,7 @@ import requests
 import json
 from bs4 import BeautifulSoup
 
+source = "https://balisatudata.baliprov.go.id/peta-cctv"
 url = "https://balisatudata.baliprov.go.id/api/v1/report-cctv"
 paginate = False
 customCategory = False

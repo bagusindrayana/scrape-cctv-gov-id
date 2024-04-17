@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 paginate = False
 customCategory = False
 
+source = "https://www.bekasikota.go.id/cctv"
 url = "https://www.bekasikota.go.id/cctv"
 
 def getList(page=None,cat=None):
