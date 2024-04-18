@@ -1,4 +1,4 @@
-from Providers import Jogja,KabBanjar,Malang,BanjarBaru,Bekasi,KabOku, Surakarta,Tol,Samarinda,Bandung,Bali,Cirebon,Sleman
+from Providers import Jogja,KabBanjar,Malang,BanjarBaru,Bekasi,KabOku, Surakarta,Tol,Samarinda,Bandung,Bali,Cirebon,Sleman,Tasikmalaya
 from typing import Union
 from fastapi import FastAPI, Response, status, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
