@@ -19,3 +19,4 @@ Scrape stream CCTV dari website-website pemerintah indonesia
 
 - jika wilayah memiliki kategori, list kategori dari wilayah tersebut bisa di akses di `/cctv/{nama_wilayah}/category`
 - jika meiliki paginasi, bisa menambahkan parameter `/cctv/{nama_wilayah}?page={page}`
+- beberapa wilayah memiliki `header` tambahan, biasanya memerlukan proxy untuk mengakses streamnya
