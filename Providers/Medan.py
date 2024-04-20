@@ -6,6 +6,7 @@ source = "https://atcsdishub.pemkomedan.go.id"
 url = "https://atcsdishub.pemkomedan.go.id/welcome/getDataLokasi?idk=1&idl="
 paginate = False
 customCategory = False
+type = "stream"
 
 payload = {}
 headers = {
@@ -17,6 +18,8 @@ headers = {
     "x-requested-with": "XMLHttpRequest",
 }
 
+def getCategory():
+    return []
 
 def getList(page=None,cat=None):
     
@@ -32,7 +35,7 @@ def getList(page=None,cat=None):
         json_data = json.loads(text)
         for data in json_data:
             results.append(
-                {"name": data["nama_lokasi"], "stream": "https://atcsdishub.pemkomedan.go.id/camera/"+data["nama_lokasi"].replace("-","").replace(" ","")+".m3u8", "header": {}}
+                {"name": data["nama_lokasi"], "stream": "https://atcsdishub.pemkomedan.go.id/camera/"+data["nama_lokasi"].replace("-","").replace(" ","")+".m3u8", "header": {},"type": type}
             )
 
     else:

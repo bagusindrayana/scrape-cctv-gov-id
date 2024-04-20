@@ -6,6 +6,10 @@ source = "http://cctv.okukab.go.id"
 url = "http://cctv.okukab.go.id/map/viewer/ajax/get_markers.php"
 paginate = False
 customCategory = False
+type = "image"
+
+def getCategory():
+    return []
 
 def getList(page=None,cat=None):
     payload = "id_map=1"
@@ -28,6 +32,7 @@ def getList(page=None,cat=None):
             result.append({
                 'name':item['address'],
                 'stream':"http://103.137.176.8/zm/cgi-bin/nph-zms?scale=100&mode=jpeg&maxfps=24&monitor="+str(item['id'])+"&buffer=1000&user=tamu&pass=tamu123",
-                'header':{}
+                'header':{},
+                "type": type
             })
     return result

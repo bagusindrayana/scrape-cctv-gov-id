@@ -6,6 +6,8 @@ source = "https://balisatudata.baliprov.go.id/peta-cctv"
 url = "https://balisatudata.baliprov.go.id/api/v1/report-cctv"
 paginate = False
 customCategory = False
+type = "stream"
+
 payload = {}
 headers = {
     "authority": "balisatudata.baliprov.go.id",
@@ -15,6 +17,9 @@ headers = {
     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
     "x-requested-with": "XMLHttpRequest",
 }
+
+def getCategory():
+    return []
 
 def getList(page=None,cat=None):
     
@@ -31,7 +36,8 @@ def getList(page=None,cat=None):
                 {
                     "name": data["ch_name"], 
                     "stream": "https://transcode.baliprov.dev/get-m3u8.php?srv=internals&m3u8=live.m3u8&channel="+str(data["ch_id"]), 
-                    "header": headers
+                    "header": headers,
+                    "type": type
                 }
             )
 

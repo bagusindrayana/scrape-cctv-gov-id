@@ -36,6 +36,7 @@ def get_cctv(wilayah: str, page: int = 1,category:str = None,response=Response):
         'source':w.source,
         'paginate':w.paginate,
         'customCategory':w.customCategory,
+        'type':w.type,
         'data':w.getList(page,category)
     }
     

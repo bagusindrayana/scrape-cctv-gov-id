@@ -5,6 +5,10 @@ source = "http://cctv.malangkota.go.id"
 url = "http://api.cctv.malangkota.go.id/records/cameras"
 paginate = False
 customCategory = False
+type = "stream"
+
+def getCategory():
+    return []
 
 def getList(page=None,cat=None):
     payload = {}
@@ -32,6 +36,7 @@ def getList(page=None,cat=None):
             results.append({
                 'name':item['name'],
                 'stream':"http://stream.cctv.malangkota.go.id/WebRTCApp/streams/"+item['stream_id'] +".m3u8?token=null",
-                'header':{}
+                'header':{},
+                "type": type
             })
     return results

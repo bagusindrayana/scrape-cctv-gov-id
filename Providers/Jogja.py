@@ -5,6 +5,11 @@ source = "https://cctv.jogjakota.go.id"
 url = "https://cctv.jogjakota.go.id/home/getdata"
 paginate = False
 customCategory = False
+type = "stream"
+
+
+def getCategory():
+    return []
 
 def getList(page=None,cat=None):
     payload = {}
@@ -33,6 +38,7 @@ def getList(page=None,cat=None):
             results.append({
                 'name':item['cctv_title'],
                 'stream':item['cctv_link'],
-                'header':{}
+                'header':{},
+                "type": type
             })
     return results

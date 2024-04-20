@@ -5,6 +5,10 @@ source = "https://diskominfo.samarindakota.go.id/media/cctv"
 url = "https://diskominfo.samarindakota.go.id/media/cctv?page="
 paginate = True
 customCategory = False
+type = "video"
+
+def getCategory():
+    return []
 
 def getList(page=None,cat=None):
     payload = {}
@@ -38,7 +42,8 @@ def getList(page=None,cat=None):
                 results.append({
                     'name': name,
                     'stream': source,
-                    'header':{}
+                    'header':{},
+                    "type": type
                 })
     else:
         print(response.status_code)

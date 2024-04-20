@@ -6,6 +6,11 @@ source = "https://cctv.banjarkab.go.id"
 url = "https://cctv.banjarkab.go.id/"
 paginate = False
 customCategory = False
+type = "stream"
+
+
+def getCategory():
+    return []
 
 def getList(page=None,cat=None):
     payload = {}
@@ -40,6 +45,7 @@ def getList(page=None,cat=None):
                 results.append({
                     'name': name,
                     'stream': source['src'],
-                    'header':{}
+                    'header':{},
+                    "type": type
                 })
     return results

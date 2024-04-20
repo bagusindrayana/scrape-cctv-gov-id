@@ -3,6 +3,7 @@ import json
 from bs4 import BeautifulSoup
 paginate = False
 customCategory = False
+type = "stream"
 
 source = "https://24jam.slemankab.go.id"
 url = "https://24jam.slemankab.go.id//cctv/get_cctv_list"
@@ -22,6 +23,10 @@ headers = {
   'sec-ch-ua-platform': '"Android"',
   'Content-Type': 'application/json',
 }
+
+def getCategory():
+    return []
+
 def getList(page=None,cat=None):
     response = requests.request("GET", url, headers=headers, data=payload,verify=False)
     results = []
@@ -30,6 +35,6 @@ def getList(page=None,cat=None):
         for data in json_data:
             id = data['cctv_url_public'].replace("https://src24jam.slemankab.go.id/","").replace("/player.html","")
             results.append(
-                {"name": data["cctv_location"], "stream": "https://src24jam.slemankab.go.id/"+id+"/hls/live.stream.m3u8", "header": {}}
+                {"name": data["cctv_location"], "stream": "https://src24jam.slemankab.go.id/"+id+"/hls/live.stream.m3u8", "header": {},"type": type}
             )
     return results

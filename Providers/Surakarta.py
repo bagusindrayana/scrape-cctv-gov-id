@@ -3,6 +3,7 @@ import json
 from bs4 import BeautifulSoup
 paginate = False
 customCategory = False
+type = "stream"
 
 source = "https://ccroom-dishub.surakarta.go.id"
 url = "https://ccroom-dishub.surakarta.go.id"
@@ -22,6 +23,10 @@ headers = {
     'x-requested-with': 'XMLHttpRequest',
     'Content-Type': 'application/json',
 }
+
+def getCategory():
+    return []
+
 def getList(page=None,cat=None):
     
 
@@ -35,6 +40,7 @@ def getList(page=None,cat=None):
             results.append({
                     'name': list['lokasi'],
                     'stream': list['url'],
-                    'header':{}
+                    'header':{},
+                    "type": type
                 })
     return results

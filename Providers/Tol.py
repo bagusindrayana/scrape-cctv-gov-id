@@ -5,6 +5,7 @@ source = "https://bpjt.pu.go.id/cctv/cctv_inframe"
 url = "https://bpjt.pu.go.id/cctv/cctv_inframe"
 paginate = False
 customCategory = True
+type = "stream"
 
 payload = {}
 headers = {
@@ -87,6 +88,7 @@ def getList(page=None, cat=None):
                         "sec-ch-ua-mobile": "?0",
                         "sec-ch-ua-platform": '"Windows"',
                     },
+                    "type": type
                 }
             )
     return result

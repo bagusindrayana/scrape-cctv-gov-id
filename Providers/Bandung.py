@@ -6,6 +6,8 @@ source = "https://pelindung.bandung.go.id"
 url = "https://pelindung.bandung.go.id:8443/api/cek"
 paginate = False
 customCategory = False
+type = "stream"
+
 
 payload = {}
 headers = {
@@ -17,6 +19,8 @@ headers = {
     "x-requested-with": "XMLHttpRequest",
 }
 
+def getCategory():
+    return []
 
 def getList(page=None,cat=None):
     
@@ -29,7 +33,7 @@ def getList(page=None,cat=None):
         json_data = json.loads(response.text)
         for data in json_data:
             results.append(
-                {"name": data["cctv_name"], "stream": data["stream_cctv"], "header": headers}
+                {"name": data["cctv_name"], "stream": data["stream_cctv"], "header": headers,"type": type}
             )
 
     else:

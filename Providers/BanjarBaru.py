@@ -6,6 +6,8 @@ source = "https://cctv.banjarbarukota.go.id"
 url = "https://cctv.banjarbarukota.go.id/"
 paginate = False
 customCategory = False
+type = "stream"
+
 payload = {}
 headers = {
     'authority': 'cctv.jogjakota.go.id',
@@ -22,6 +24,9 @@ headers = {
     'x-requested-with': 'XMLHttpRequest',
     'Content-Type': 'application/json',
 }
+
+def getCategory():
+    return []
 
 def getList(page=None,cat=None):
     
@@ -41,6 +46,7 @@ def getList(page=None,cat=None):
                 results.append({
                     'name': name,
                     'stream': source['src'],
-                    'header':{}
+                    'header':{},
+                    "type": type
                 })
     return results

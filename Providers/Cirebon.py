@@ -6,8 +6,13 @@ source = "https://cctv.cirebonkota.go.id"
 url = "https://cctv.cirebonkota.go.id/cctv"
 paginate = False
 customCategory = False
+type = "stream"
+
 headers = {}
 payload = {}
+
+def getCategory():
+    return []
 
 def getList(page=None,cat=None):
     results = []
@@ -18,6 +23,7 @@ def getList(page=None,cat=None):
         results.append({
             'name': "CCTV "+str(len(results)+1),
             'stream': a,
-            'header':{}
+            'header':{},
+            "type": type
         })
     return results
