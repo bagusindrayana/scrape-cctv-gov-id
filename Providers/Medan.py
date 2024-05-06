@@ -35,7 +35,7 @@ def getList(page=None,cat=None):
         json_data = json.loads(text)
         for data in json_data:
             results.append(
-                {"name": data["nama_lokasi"], "stream": "https://atcsdishub.pemkomedan.go.id/camera/"+data["nama_lokasi"].replace("-","").replace(" ","")+".m3u8", "header": {},"type": type}
+                {"name": data["nama_lokasi"], "stream": "https://atcsdishub.pemkomedan.go.id/camera/"+data["nama_lokasi"].replace("-","").replace(" ","")+".m3u8", "header": headers,"type": type}
             )
 
     else:
