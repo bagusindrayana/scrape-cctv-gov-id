@@ -25,7 +25,7 @@ def getList(page=None,cat=None):
     
 
     response = requests.request(
-        "GET", url, headers=headers, data=payload
+        "GET", url, headers=headers, data=payload,verify=False
     )
     results = []
     if response.status_code == 200:
